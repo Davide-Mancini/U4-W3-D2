@@ -103,7 +103,7 @@ public class Evento {
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
                 ", location=" + location +
-                ", partecipazioni=" + partecipazioni +
+
                 '}';
     }
 }

@@ -23,16 +23,24 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         PersonaDAO personaDAO = new PersonaDAO(em);
 
        Evento eventoFromDB =  eventoDAO.findById("1babe919-8381-4218-9a74-91b16b1f2cfe");
-       Persona persona1 = new Persona("davide","mancini","mancinidavide73@gmail.com",LocalDate.of(1999,03,07), Sesso.MASCHIO);
-//        personaDAO.save(persona1);
-       Persona persona1FromDB = personaDAO.findById("88417a7d-7a7a-4825-b635-eec7a98f1c00");
+       Persona persona2 = new Persona("rachele","frascatani","rakfrasc@gmail.com",LocalDate.of(1999,01,13), Sesso.FEMMINA);
+     personaDAO.save(persona2);
+       Persona persona2FromDB = personaDAO.findById("2c92ed06-f444-4ea4-b575-bd2fd4ee582b");
        Location locationFromDB = locationDAO.findById("4c691593-d3cd-477b-8086-3531d44d0be5");
 //       Evento evento1 = new Evento("serata di beneficenza", LocalDate.of(2025,12,23),"serata di beneficenza per le persone bisognose", TipoEvento.PUBBLICO,200);
        Evento evento2 = new Evento("partita di calcio", LocalDate.of(2025,9,23),"AS Roma - SS lazio",TipoEvento.PUBBLICO,67756,locationFromDB );
 
-       Location location1 = new Location("Stadio Olimpico","Roma", eventoFromDB);
-       locationDAO.save(location1);
-    eventoDAO.save(evento2);
+//       Location location1 = new Location("Stadio Olimpico","Roma", eventoFromDB);
+//       locationDAO.save(location1);
+//       eventoDAO.save(evento2);
+
+
+
+      Partecipazione partecipazione1 = new Partecipazione(persona2FromDB,eventoFromDB,Stato.CONFERMATA);
+     partecipazioneDAO.save(partecipazione1);
+
+
+
 //     eventoDAO.save(evento3);
 //       eventoDAO.findByIdAndDelete(4);
 //       eventoDAO.findById(3);
