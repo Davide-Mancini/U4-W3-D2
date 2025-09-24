@@ -6,6 +6,9 @@
         <!-- Il nome della persistence unit è importante e ci servirà usarlo dopo nel codice JAVA -->
         <!-- Se non dichiaro le mie entities qua, non le troverà e non creerà automaticamente le tabelle -->
         <class>davidemancini.entities.Evento</class>
+        <class>davidemancini.entities.Persona</class>
+        <class>davidemancini.entities.Partecipazione</class>
+        <class>davidemancini.entities.Location</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/u4-w3-d2"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>

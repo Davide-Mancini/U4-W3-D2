@@ -4,32 +4,44 @@ package davidemancini.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="eventi")
 public class Evento {
 //ATTRIBUTI
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue()
+    private UUID id;
     private String titolo;
     private LocalDate dataEvento;
     private String descrizione;
     @Enumerated(EnumType.STRING)
     private TipoEvento tipoEvento;
     private int numeroMassimoPartecipanti;
+    @OneToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+    @OneToMany(mappedBy = "evento")
+    private List<Partecipazione> partecipazioni = new ArrayList<>();
+
 //COSTRUTTORI
     public Evento(){}
-    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti){
+    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location){
         this.titolo=titolo;
         this.dataEvento=dataEvento;
         this.descrizione=descrizione;
         this.tipoEvento=tipoEvento;
         this.numeroMassimoPartecipanti=numeroMassimoPartecipanti;
+        this.location=location;
+
+
     }
 //METODI
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -73,6 +85,14 @@ public class Evento {
         this.titolo = titolo;
     }
 
+    public List<Partecipazione> getPartecipazioni() {
+        return partecipazioni;
+    }
+
+    public void setPartecipazioni(List<Partecipazione> partecipazioni) {
+        this.partecipazioni = partecipazioni;
+    }
+
     @Override
     public String toString() {
         return "Evento{" +
@@ -82,6 +102,8 @@ public class Evento {
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
+                ", location=" + location +
+                ", partecipazioni=" + partecipazioni +
                 '}';
     }
 }
