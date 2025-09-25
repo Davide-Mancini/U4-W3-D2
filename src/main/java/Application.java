@@ -47,6 +47,8 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
     eventoDAO.save(concerto2);
     eventoDAO.getConcertiInStreaming(concerto1).forEach(System.out::println);
 
+    eventoDAO.getConcertiPerGenere().forEach(System.out::println);
+
 
 
     }

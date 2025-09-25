@@ -45,7 +45,8 @@ public class EventoDAO {
     return query.getResultList();
     }
 
-    public void getConcertiPerGenere(){
-
+    public List<Concerto> getConcertiPerGenere(){
+TypedQuery<Concerto> query = entityManager.createQuery("SELECT c FROM Concerto c WHERE c.genere = POP", Concerto.class);
+ return query.getResultList();
     }
 }

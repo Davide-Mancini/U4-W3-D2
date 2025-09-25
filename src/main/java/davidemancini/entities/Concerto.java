@@ -1,6 +1,8 @@
 package davidemancini.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import java.time.LocalDate;
 
@@ -8,7 +10,8 @@ import java.time.LocalDate;
 public class Concerto extends Evento {
     //ATTRIBUTI
 
-    private Genere genre;
+    @Enumerated(EnumType.STRING)
+    private Genere genere;
     private boolean inStreaming;
 
     //COSTRUTTORI
@@ -17,7 +20,7 @@ public class Concerto extends Evento {
 
     public Concerto(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, Genere genre, boolean inStreaming) {
         super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti, location);
-        this.genre = genre;
+        this.genere = genre;
         this.inStreaming = inStreaming;
     }
 
@@ -25,11 +28,11 @@ public class Concerto extends Evento {
 
 
     public Genere getGenre() {
-        return genre;
+        return genere;
     }
 
     public void setGenre(Genere genre) {
-        this.genre = genre;
+        this.genere = genre;
     }
 
     public boolean isInStreaming() {
@@ -43,7 +46,7 @@ public class Concerto extends Evento {
     @Override
     public String toString() {
         return "Concerto{" +
-                "genre=" + genre +
+                "genre=" + genere +
                 ", inStreaming=" + inStreaming +
                 '}';
     }
