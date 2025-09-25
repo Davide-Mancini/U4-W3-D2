@@ -29,15 +29,22 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
         //--------------------------------- RIECERCHE E ISTANZE-------------------------------------------------
        Evento eventoFromDB =  eventoDAO.findById("1babe919-8381-4218-9a74-91b16b1f2cfe");
+       Evento eventoFromDB2 =  eventoDAO.findById("1babe919-8381-4218-9a74-91b16b1f2cfe");
        Persona persona2 = new Persona("rachele","frascatani","rakfrasc@gmail.com",LocalDate.of(1999,01,13), Sesso.FEMMINA);
-     personaDAO.save(persona2);
-       Persona persona2FromDB = personaDAO.findById("2c92ed06-f444-4ea4-b575-bd2fd4ee582b");
-       Location locationFromDB = locationDAO.findById("4c691593-d3cd-477b-8086-3531d44d0be5");
-       Location locationFromDB2 = locationDAO.findById("dc32aa44-423f-42bc-9131-0248075784a1");
-       Evento evento2 = new Evento("partita di calcio", LocalDate.of(2025,9,23),"AS Roma - SS lazio",TipoEvento.PUBBLICO,67756,locationFromDB );
+//       personaDAO.save(persona2);
+       Persona persona2FromDB = personaDAO.findById("70941226-3fd0-42c8-8866-7c4930773d7e");
+       Location location1 = new Location("prova","roma",eventoFromDB);
+       Location location2 = new Location("prova","milano",eventoFromDB2);
+      Location location1formDB = locationDAO.findById("2eef9434-0bb9-4c68-8636-9ee0c23b28d6");
+      Location location2formDB = locationDAO.findById("c01528de-bcd7-455c-9d6a-846aa45efa0f");
+
+//       Evento evento2 = new Evento("partita di calcio", LocalDate.of(2025,9,23),"AS Roma - SS lazio",TipoEvento.PUBBLICO,67756,locationFromDB );
        Partecipazione partecipazione1 = new Partecipazione(persona2FromDB,eventoFromDB,Stato.CONFERMATA);
-    Concerto concerto1 = new Concerto("gem tour", LocalDate.of(2025,11,24),"concerto gemitaiz",TipoEvento.PUBBLICO,40000,locationFromDB2,Genere.POP,true);
+    Concerto concerto1 = new Concerto("gem tour", LocalDate.of(2025,11,24),"concerto gemitaiz",TipoEvento.PUBBLICO,40000,location1formDB,Genere.POP,true);
+    Concerto concerto2 = new Concerto("prova",LocalDate.of(2025,12,25),"provaaaaaaa",TipoEvento.PRIVATO,12000, location2formDB,Genere.ROCK,false);
+
     eventoDAO.save(concerto1);
+    eventoDAO.save(concerto2);
     eventoDAO.getConcertiInStreaming(concerto1).forEach(System.out::println);
 
 
