@@ -10,6 +10,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name="eventi")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
 public class Evento {
 //ATTRIBUTI
     @Id

@@ -22,6 +22,10 @@ public class Persona {
     private Sesso sesso;
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> listaPartecipazioni= new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "atleti")
+    private GaraDiAtletica setAtleti;
+
 
     //COSTRUTTORI
 

@@ -1,9 +1,12 @@
 package dao;
 
+import davidemancini.entities.Concerto;
 import davidemancini.entities.Evento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.UUID;
 
 public class EventoDAO {
@@ -35,5 +38,14 @@ public class EventoDAO {
         entityManager.remove(trovato);
         transaction.commit();
         System.out.println("Evento " + trovato + " è stato eliminato");
+    }
+    public List<Concerto> getConcertiInStreaming(Concerto concerto){
+        TypedQuery<Concerto> query = entityManager.createQuery("SELECT c FROM Concerto c WHERE c.inStreaming = true", Concerto.class);
+//        query.setParameter("concerto", concerto);
+    return query.getResultList();
+    }
+
+    public void getConcertiPerGenere(){
+
     }
 }

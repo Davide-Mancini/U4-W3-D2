@@ -9,6 +9,9 @@
         <class>davidemancini.entities.Persona</class>
         <class>davidemancini.entities.Partecipazione</class>
         <class>davidemancini.entities.Location</class>
+        <class>davidemancini.entities.Concerto</class>
+        <class>davidemancini.entities.GaraDiAtletica</class>
+        <class>davidemancini.entities.PartitaDiCalcio</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/u4-w3-d2"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
